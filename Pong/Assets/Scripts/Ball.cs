@@ -5,9 +5,18 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public float Speed = 25.0f;
+    private bool HasTheBallMoved = false;
     private void Start()
     {
-        GetComponent<Rigidbody2D>().velocity = Vector2.right * Speed;
+
+    }
+    private void Update()
+    {
+        if (GameManager.SharedInstance.GameStarted == true && this.HasTheBallMoved == false)
+        {
+            GetComponent<Rigidbody2D>().velocity = Vector2.right * Speed;
+            this.HasTheBallMoved = true;
+        }
     }
     //obtendre informacion del choque de la bola
     //para saber si he chocado con el objeto correcto o no
