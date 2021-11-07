@@ -36,4 +36,12 @@ public class GameManager : MonoBehaviour
         Ball b = ball.GetComponent<Ball>();
         ball.GetComponent<Rigidbody2D>().velocity = NextDirection.normalized * b.Speed;
     }
+    public void Exit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 }
